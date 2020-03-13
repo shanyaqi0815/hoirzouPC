@@ -18,23 +18,25 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+
 router.beforeEach((to,form,next)=>{
   window.scrollTo(0, 0) //页面高度归0
   if(to.meta.title){
     document.title = to.meta.title
   }
-  // 判断用户是否登录 从session里面取值
-  if(sessionStorage.getItem("a")){
-    next()
-  }else{
-    // alert("您还没有登录")
-    Vue.prototype.$message({
-      type:"error",
-      message:"您还没有登录"
-    })
-    next({
-      path: '/',
-    })
-    return
-  }
+  // // 判断用户是否登录 从session里面取值
+  // if(sessionStorage.getItem("a")){
+  //   next()
+  // }else{
+  //   // // alert("您还没有登录")
+  //   // Vue.prototype.$message({
+  //   //   type:"error",
+  //   //   message:"您还没有登录"
+  //   // })
+  //   next({
+  //     path: '/',
+  //   })
+  //   return
+  // }
 })
