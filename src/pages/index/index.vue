@@ -34,8 +34,12 @@
       <!-- 公共组件 -->
       <bob></bob>
       <!-- 局部组件 -->
-      <indexcom></indexcom>
+      <indexcom :state = arr_for @showCityName = unp></indexcom>
       <el-button @click="fn">123123213</el-button>
+
+
+      <el-input placeholder="请输入内容" v-model="input" clearable >
+</el-input>
   </div>
 </template>
 
@@ -43,6 +47,7 @@
 import indexcom from "../index/components/indexcom"
 import bob from "../../Common/bob"
 import {add,fn} from '../../Axios/Http'
+import {phone,identity,Email} from '../../public/index'
 export default {
   name: 'hello1',
   components:{
@@ -51,27 +56,32 @@ export default {
   data () {
     return {
       // loading:false,
-      msg: 'Welcome to Your Vue.js App'
+      arr_for:[
+        {name:"李文亮",age:45,fmals:"武汉"},
+        {name:"郭某亮",age:25,fmals:"郑州"}
+      ],
+      input:""
+    }
+  },
+  watch:{
+    input(lod,nlod){
+      console.log(this.input)
     }
   },
   created(){
     add().then(res=>{
       console.log(res)
     })
-              var p ={
-            page:1
-          }
-          setTimeout(()=>{
-            fn(p).then(res=>{
-              console.log(res)
-            })
-          },3000)
+    fn()
   },
   methods:{
     fn(){
 
+      Email(this.input)
 
-
+    },
+    unp(val){
+      console.log(val)
     }
   }
 }

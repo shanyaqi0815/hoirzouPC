@@ -1,7 +1,9 @@
 import axios from 'axios'
 import qs from 'qs'
-
+import {s_set} from '../public/index'
+ 
 axios.defaults.timeout = 5000 // 响应时间
+import { Form } from 'element-ui'
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8' //设置请求头
 
 axios.defaults.baseURL = 'https://h5.horizou.cn/' //  配置接口地址
@@ -50,7 +52,7 @@ export function fetchPost (url, params,name) {
       .then(response => {
         resolve(response)
          //把所有通过psot请求到数据全部存在session中
-        sessionStorage.setItem(name,JSON.stringify(response)) 
+         s_set(name,response)
       }, err => {
         reject(err)
       })
@@ -67,7 +69,7 @@ export function fetchGet (url, param,name) {
       .then(response => {
         resolve(response)
          //把所有通过git请求到数据全部存在session中
-        sessionStorage.setItem(name,JSON.stringify(response)) 
+         s_set(name,response)
       }, err => {
         reject(err)
       })

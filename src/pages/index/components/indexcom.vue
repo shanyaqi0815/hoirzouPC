@@ -8,12 +8,22 @@
           :value="item.value">
         </el-option>
       </el-select>
+      <div v-for="arr in state">
+          <p>{{arr.name}}</p>
+      </div>
+      <button type="button" @click="fn">提交数据到父组件</button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'hello',
+  props:{
+    state:{
+      type:Array,
+      required:true,
+    }
+  },
   data () {
     return {
       options: [{
@@ -33,6 +43,14 @@ export default {
           label: '北京烤鸭'
         }],
         value: ''
+    }
+  },
+  created(){
+    this.$emit('showCityName',this.options)
+  },
+  methods:{
+    fn(){
+      this.$emit('showCityName',this.options)
     }
   }
 }

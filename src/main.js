@@ -7,9 +7,12 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
 import {Message} from 'element-ui';
+import {s_set,s_get} from './public/index'
 Vue.use(ElementUI)
 Vue.use('Message')
 Vue.config.productionTip = false
+Vue.prototype.$s_set = s_set
+Vue.prototype.$s_get = s_get
 // Vue.prototype.$alert = MessageBox.alert;
 /* eslint-disable no-new */
 new Vue({
