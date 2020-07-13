@@ -18,8 +18,12 @@ Vue.prototype.$s_get = s_get
 new Vue({
   el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
+  //   components: { App },
+  //   template: '<App/>'
+  render:h=>h(App),
+  mounted(){
+      document.dispatchEvent(new Event('render-event'))
+  }
 })
 
 

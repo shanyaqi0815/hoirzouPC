@@ -6,9 +6,10 @@ import pad from '@/pages/pad/pad' // 测试案例
 Vue.use(Router)
 
 export default new Router({
+  mode:"history",
   routes: [
     {
-      path: '/',
+      path: '/index',
       name: 'index',
       component: index,
       meta:{title:"首页"}
